@@ -1,0 +1,344 @@
+<html><head><style>body {
+	color: #333;
+	font-family: 'Segoe UI', 'Lucida Grande', Helvetica, sans-serif;
+	line-height: 1.5;
+	margin: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	line-height: 1em;
+	margin: 20px 0;
+}
+h1 {
+	font-size: 2.25em;
+}
+h2 {
+	font-size: 1.75em;
+}
+h3 {
+	font-size: 1.5em;
+}
+h4, h5, h6 {
+	font-size: 1.25em;
+}
+
+a {
+	color: #08C;
+	text-decoration: none;
+}
+a:hover, a:focus {
+	text-decoration: underline;
+}
+a:visited {
+	color: #058;
+}
+
+img {
+	max-width: 100%;
+}
+
+li + li {
+	margin-top: 3px;
+}
+dt {
+	font-weight: bold;
+}
+
+code {
+	background: #EEE;
+	font-family: "Consolas", "Lucida Console", monospace;
+	padding: 1px 5px;
+}
+pre {
+	background: #EEE;
+	padding: 5px 10px;
+	white-space: pre-wrap;
+}
+pre code {
+	padding: 0;
+}
+
+blockquote {
+	border-left: 5px solid #EEE;
+	margin: 0;
+	padding: 0 10px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+table + table {
+	margin-top: 1em;
+}
+thead {
+	background: #EEE;
+	text-align: left;
+}
+th, td {
+	border: 1px solid #EEE;
+	padding: 5px 10px;
+}
+
+hr {
+	background: #EEE;
+	border: 0;
+	height: 1px;
+}
+</style><style media="print">body {
+    color: #000;
+    font: 12pt serif;
+    margin: 0;
+    max-width: 100%;
+}
+
+a {
+    color: #666;
+    text-decoration: underline;
+}
+a[href]:after {
+    content: ' (' attr(href) ')';
+}
+
+blockquote, ul, dl {
+    page-break-inside: avoid;
+}
+</style><style>/* Style for the menu, possible positions/visibility */
+#__markdown-viewer__tools {
+  margin:0;
+  padding:0;
+  background:#555;
+  color:#eee;
+  box-shadow:0 -1px rgba(0,0,0,.5) inset;
+  border-radius: .5em;
+  max-width: 25%;
+  z-index: 2147483647;
+}
+
+#__markdown-viewer__tools.floating {
+  float:right;
+  margin: 0 0 .5em .5em;
+}
+
+#__markdown-viewer__tools.fixed {
+  position:fixed;
+  top:.5em;
+  right:1em;
+}
+
+#__markdown-viewer__tools.hidden {
+  display:none;
+}
+
+@media print {
+  #__markdown-viewer__tools {
+    display: none;
+  }
+}
+
+#__markdown-viewer__tools a[href]:after {
+  content: "";
+}
+
+/* Style for the menu top */
+label[for=__markdown-viewer__show-tools] {
+  display:block;
+  padding:0 18px 0 12px;
+  line-height:3em;
+  background:#333;
+  cursor:pointer;
+  border-radius: .5em;
+  min-height: 3em;
+  width: .9em;
+  float: right;
+}
+
+input#__markdown-viewer__show-tools:not(:checked) ~ label {
+  margin-left: -.9em;
+}
+
+input#__markdown-viewer__show-tools:checked ~ label {
+}
+
+label[for=__markdown-viewer__show-tools]:before{
+}
+
+label[for=__markdown-viewer__show-tools]:after {
+  content:"";
+  display:inline-block;
+  float:right;
+  margin-top:1.5em;
+  right:5px;
+  width:0;
+  height:0;
+  border-style: solid;
+  border-color: rgba(255,255,255,.5) transparent;
+  border-width: 4px 4px 0 4px;
+  transition:border-bottom .1s, border-top .1s .1s;
+}
+
+input#__markdown-viewer__show-tools:checked ~ label:after {
+  border-top-width:0;
+  border-bottom-width:4px;
+  transition:border-top .1s, border-bottom .1s .1s;
+}
+
+/* hide the input that tracks the menu's visibility */
+input#__markdown-viewer__show-tools {
+  display:none;
+}
+
+/* style, and hide/show menu items based on the input being checked */
+#__markdown-viewer__tools > .toggleable {
+  overflow:hidden;
+  transition-property:max-height, max-width, padding-top, padding-bottom, margin-top, margin-bottom;
+  transition-duration:0.5s;
+}
+
+input#__markdown-viewer__show-tools:checked ~ .toggleable {
+  max-width: 2000px;
+  max-height:300px;
+  transition-timing-function:ease-in;
+}
+
+input#__markdown-viewer__show-tools:not(:checked) ~ .toggleable {
+  max-height:0;
+  max-width:0;
+  transition-timing-function:ease-out;
+  padding-top:0;
+  padding-bottom:0;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+/* style the table of contents and its items */
+#__markdown-viewer__toc {
+  display:block;
+  padding: .5em;
+  border:0;
+}
+
+#__markdown-viewer__toc::before {
+  content: "Table of Contents";
+  text-align: center;
+  display: block;
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 1em auto;
+}
+
+#__markdown-viewer__tools select {
+  max-width: 40%;
+  margin: 0 .5em;
+}
+
+#__markdown-viewer__tools select,
+#__markdown-viewer__toc * {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#__markdown-viewer__toc a {
+  color: white;
+  text-decoration: none;
+}
+
+#__markdown-viewer__toc ul {
+  list-style: inside "• ";
+  padding: 0;
+  margin: 0;
+}
+
+#__markdown-viewer__toc ul ul {
+  padding-left: 1.5em;
+}
+
+
+/* Style the "Download Source" button at the end of the menu */
+#__markdown-viewer__tools > p {
+  text-align:center;
+  padding: 0 .5em;
+}
+
+#__markdown-viewer__download {
+  /* appearance: button; */
+  -moz-appearance: button !important;
+  display:inline-block;
+  text-align: center;
+  text-decoration:none;
+  color:#eee;
+  margin: .5em auto;
+}
+</style><meta name="viewport" content="width=device-width, initial-scale=1"><title>Django Official Tutorial Code</title></head><body><div id="__markdown-viewer__tools" class="floating"><input type="checkbox" id="__markdown-viewer__show-tools"><label for="__markdown-viewer__show-tools"></label><div id="__markdown-viewer__toc" class="toggleable"><ul><li><a href="#django-official-tutorial-code">Django Official Tutorial Code</a><ul><li><a href="#part-1-project-setup">Part 1  Project Setup</a></li><li><a href="#part-2-django-models-and-django-admin">Part 2  Django Models and Django Admin</a></li><li><a href="#part-3-django-views-and-templates">Part 3  Django Views and Templates</a></li><li><a href="#part-4-django-form">Part 4  Django Form</a></li><li><a href="#part-5-testing">Part 5  Testing</a></li><li><a href="#part-6-static-files">Part 6 Static Files</a></li><li><a href="#part-7-customize-admin-form">Part 7  Customize Admin Form</a></li></ul></li></ul></div><p class="toggleable">Pick a markdown and code style:<br><select id="__markdown-viewer__mdselect"><option value="sss">default</option><option value="github">github</option></select><select id="__markdown-viewer__hlselect"><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/agate.css">agate</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/androidstudio.css">androidstudio</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/arduino-light.css">arduino-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/arta.css">arta</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/ascetic.css">ascetic</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-cave.dark.css">atelier-cave.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-cave.light.css">atelier-cave.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-cave-dark.css">atelier-cave-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-cave-light.css">atelier-cave-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-dune.dark.css">atelier-dune.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-dune.light.css">atelier-dune.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-dune-dark.css">atelier-dune-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-dune-light.css">atelier-dune-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-estuary.dark.css">atelier-estuary.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-estuary.light.css">atelier-estuary.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-estuary-dark.css">atelier-estuary-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-estuary-light.css">atelier-estuary-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-forest.dark.css">atelier-forest.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-forest.light.css">atelier-forest.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-forest-dark.css">atelier-forest-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-forest-light.css">atelier-forest-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-heath.dark.css">atelier-heath.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-heath.light.css">atelier-heath.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-heath-dark.css">atelier-heath-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-heath-light.css">atelier-heath-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-lakeside.dark.css">atelier-lakeside.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-lakeside.light.css">atelier-lakeside.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-lakeside-dark.css">atelier-lakeside-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-lakeside-light.css">atelier-lakeside-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-plateau.dark.css">atelier-plateau.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-plateau.light.css">atelier-plateau.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-plateau-dark.css">atelier-plateau-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-plateau-light.css">atelier-plateau-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-savanna.dark.css">atelier-savanna.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-savanna.light.css">atelier-savanna.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-savanna-dark.css">atelier-savanna-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-savanna-light.css">atelier-savanna-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-seaside.dark.css">atelier-seaside.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-seaside.light.css">atelier-seaside.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-seaside-dark.css">atelier-seaside-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-seaside-light.css">atelier-seaside-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-sulphurpool.dark.css">atelier-sulphurpool.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-sulphurpool.light.css">atelier-sulphurpool.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-sulphurpool-dark.css">atelier-sulphurpool-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atelier-sulphurpool-light.css">atelier-sulphurpool-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atom-one-dark.css">atom-one-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/atom-one-light.css">atom-one-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/brown-paper.css">brown-paper</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/brown_paper.css">brown_paper</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/codepen-embed.css">codepen-embed</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/color-brewer.css">color-brewer</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/darcula.css">darcula</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/dark.css">dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/darkula.css">darkula</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/default.css">default</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/docco.css">docco</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/dracula.css">dracula</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/far.css">far</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/foundation.css">foundation</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/github.css">github</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/github-gist.css">github-gist</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/googlecode.css">googlecode</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/grayscale.css">grayscale</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/gruvbox-dark.css">gruvbox-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/gruvbox-light.css">gruvbox-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/hopscotch.css">hopscotch</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/hybrid.css">hybrid</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/idea.css">idea</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/ir-black.css">ir-black</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/ir_black.css">ir_black</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/kimbie.dark.css">kimbie.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/kimbie.light.css">kimbie.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/magula.css">magula</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/monokai.css">monokai</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/monokai-sublime.css">monokai-sublime</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/monokai_sublime.css">monokai_sublime</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/mono-blue.css">mono-blue</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/obsidian.css">obsidian</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/ocean.css">ocean</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/paraiso.dark.css">paraiso.dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/paraiso.light.css">paraiso.light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/paraiso-dark.css">paraiso-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/paraiso-light.css">paraiso-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/pojoaque.css">pojoaque</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/purebasic.css">purebasic</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/qtcreator_dark.css">qtcreator_dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/qtcreator_light.css">qtcreator_light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/railscasts.css">railscasts</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/rainbow.css">rainbow</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/routeros.css">routeros</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/school-book.css">school-book</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/school_book.css">school_book</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/solarized-dark.css">solarized-dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/solarized-light.css">solarized-light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/solarized_dark.css">solarized_dark</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/solarized_light.css">solarized_light</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/sunburst.css">sunburst</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/tomorrow.css">tomorrow</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/tomorrow-night.css">tomorrow-night</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/tomorrow-night-blue.css">tomorrow-night-blue</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/tomorrow-night-bright.css">tomorrow-night-bright</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/tomorrow-night-eighties.css">tomorrow-night-eighties</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/vs.css">vs</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/vs2015.css">vs2015</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/xcode.css">xcode</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/xt256.css">xt256</option><option value="moz-extension://813b56f3-2561-4583-b485-eedfdb517f7a/lib/highlightjs/styles/zenburn.css">zenburn</option></select></p><p class="toggleable"><a id="__markdown-viewer__download" download="markdown.html" style="display: none;">Download as HTML</a></p></div><div class="markdownRoot"><h2 id="django-official-tutorial-code">Django Official Tutorial Code</h2>
+<p>The link of Django Official Tutorial is:</p>
+<p><a href="https://docs.djangoproject.com/en/2.2/intro/">https://docs.djangoproject.com/en/2.2/intro/</a></p>
+<p>Each part is stored in a separate directory.</p>
+<h3 id="part-1-project-setup">Part 1  Project Setup</h3>
+<pre><code>$django-admin startproject myproject .
+$python manage.py runserver
+$python manage.py startapp polls
+</code></pre>
+<p>Create a project
+Write the first hello world view</p>
+<h3 id="part-2-django-models-and-django-admin">Part 2  Django Models and Django Admin</h3>
+<p>Database setup</p>
+<pre><code>$python manage.py migrate
+$sqlite3 db.sqlite3  # cli for sqlite
+
+$python manage.py makemigrations polls  # to 0001_initial.py
+$python manage.py sqlmigrate polls 0001  # SQL
+
+$python manage.py check
+</code></pre>
+<p>django_migrations special table in the database to track</p>
+<p>add django-extensions app, see requirements.txt
+$pip install -r requirements.txt</p>
+<pre><code>$python manage.py shell_plus --ipython   # same as 
+$python manage.py shell_plus
+</code></pre>
+<p>It auto loads all the models.</p>
+<p>Introducing the Django Admin</p>
+<h3 id="part-3-django-views-and-templates">Part 3  Django Views and Templates</h3>
+<p>Write templates and views for index and detail two pages.</p>
+<p>Add <code>app_name = 'polls'</code> to the polls/urls.py to set url namespace.</p>
+<pre><code>{% url 'polls:detail' question.id %}
+</code></pre>
+<h3 id="part-4-django-form">Part 4  Django Form</h3>
+<p>This part has an example of manually writing a form
+The code is smart.</p>
+<p>This part also introduces generic class based views</p>
+<pre><code>detail ---|
+          |
+          | vote (can go back to detail or results depending on selection)
+results---|
+</code></pre>
+<h3 id="part-5-testing">Part 5  Testing</h3>
+<p>Command to run django tests:</p>
+<pre><code>$python manage.py test polls
+</code></pre>
+<p>Test class is derived from TestCase</p>
+<pre><code>class QuestionModelTests(TestCase)
+</code></pre>
+<h3 id="part-6-static-files">Part 6 Static Files</h3>
+<p>static file is saved in this directory</p>
+<p>polls/static/polls/style.css</p>
+<p>In the style.css file, cannot use <code>static</code> tag. CSS file does not go thru
+template system.</p>
+<pre><code>background: white url("images/background.gif") no-repeat;
+</code></pre>
+<h3 id="part-7-customize-admin-form">Part 7  Customize Admin Form</h3>
+<p>The code below is interesting.</p>
+<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">ChoiceInline</span>(<span class="hljs-title">admin</span>.<span class="hljs-type">StackedInline</span>):
+    model = <span class="hljs-type">Choice</span>
+    extra = 3
+   
+<span class="hljs-keyword">class</span> <span class="hljs-type">QuestionAdmin</span>(<span class="hljs-title">admin</span>.<span class="hljs-type">ModelAdmin</span>):
+    fieldsets = ...
+    inlines = [<span class="hljs-type">ChoiceInline</span>]
+    
+admin.site.register(<span class="hljs-type">Question</span>, <span class="hljs-type">QuestionAdmin</span>)
+</span></code></pre>
+<p>Last Update: 2019/07/24 08:46:43</p>
+</div></body></html>

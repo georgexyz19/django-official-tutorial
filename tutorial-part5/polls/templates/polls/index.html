@@ -1,0 +1,15 @@
+<!-- # polls/templates/polls/index.html -->
+
+{% if latest %}
+
+  <ul>
+    {% for q in latest %}
+    <li><a href="{% url 'detail' q.id %}">{{ q.question_text }}</a></li>
+    {% endfor %}
+  </ul>
+
+{% else %}
+
+  <p>No polls are available.</p>
+
+{% endif %}

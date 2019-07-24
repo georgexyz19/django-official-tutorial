@@ -1,0 +1,1 @@
+source ~/.venv/django/bin/activate

@@ -1,0 +1,30 @@
+<!-- # polls/templates/polls/index.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+  <title>Django Official Tutorial Index Page</title>
+</head>
+<body>
+
+{% if latest %}
+
+  <ul>
+    {% for q in latest %}
+    <li><a href="{% url 'detail' q.id %}">{{ q.question_text }}</a></li>
+    {% endfor %}
+  </ul>
+
+{% else %}
+
+  <p>No polls are available.</p>
+
+{% endif %}
+
+</body>
+</html>
+
